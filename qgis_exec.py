@@ -11,6 +11,9 @@ layer_res = QgsProject.instance().mapLayersByName(layer_name)[0]
 # Get the index of the date field
 index_data = layer_res.fields().indexFromName(layer_data)
 
+# Get all field names
+field_names = [field.name() for field in layer_res.fields()]
+
 index_reproved = field_names.index(isReproved)
 
 index_reproved = layer_res.fields().indexFromName(isReproved)
@@ -56,7 +59,7 @@ renderer.rootRule().appendChild(rule_ok)
 renderer.rootRule().appendChild(rule_near)
 renderer.rootRule().appendChild(rule_expired)
 
-# Guarantees red color setting in Unapproved cases
+# 
 renderer.rootRule().appendChild(rule_not_approved)
 
 # Set the renderer for the layer
